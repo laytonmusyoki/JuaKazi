@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Register from './pages/Register'
 import { ToastContainer } from 'react-toastify'
 import Home from './pages/Home'
@@ -17,6 +17,7 @@ import Services from './pages/Services'
 import ServiceDetails from './pages/ServiceDetails'
 
 function App() {
+  const location=useLocation()
   useEffect(()=>{
     AOS.init({
       duration:800,
@@ -31,7 +32,7 @@ function App() {
   return (
     <>
     <Router>
-    <Navbar/>
+    {location.pathname !== '/register' && <Navbar />}
       <Routes>
         <Route path='/' 
         element={
