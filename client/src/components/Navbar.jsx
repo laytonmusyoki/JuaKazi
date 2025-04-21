@@ -58,7 +58,7 @@ function Navbar() {
             )}
 
             {/* Mobile Toggle */}
-            <div className="md:hidden text-2xl text-gray-800 cursor-pointer" onClick={toggleSidebar}>
+            <div className="md:hidden text-2xl text-white cursor-pointer" onClick={toggleSidebar}>
               <FaBars />
             </div>
           </div>

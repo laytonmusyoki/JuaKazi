@@ -70,13 +70,13 @@ function Hero() {
                             data-aos="zoom-out" 
                             data-aos-duration="500"
                             data-aos-once="true"
-                             className='text-lg md:text-5xl font-extrabold'>{data.title}</h1>
+                             className='text-4xl md:text-5xl font-extrabold'>{data.title}</h1>
                             <h5
                             data-aos="fade-up" 
                             data-aos-offset="0"
                             data-aos-duration="500"
                             data-aos-delay="300"
-                             className='text-lg md:text-xl font-mono'>{data.subtitle}</h5>
+                             className='text-sm md:text-xl '>{data.subtitle}</h5>
                         </div>
                         <div>
                             <div
