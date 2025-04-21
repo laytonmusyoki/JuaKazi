@@ -50,10 +50,10 @@ function Navbar() {
 
             {dropdownOpen && (
               <div className="absolute top-12 right-0 bg-white w-44 p-3 rounded-md shadow-lg border z-50 text-sm space-y-2">
-                <a href="#" className="block hover:text-primary">Login</a>
-                <a href="/register" className="block hover:text-primary">Register</a>
-                <a href="#" className="block hover:text-primary">Dashboard</a>
-                <a href="#" className="block hover:text-primary">Profile</a>
+                <a href="#" className="block hover:text-black">Login</a>
+                <a href="/register" className="block hover:text-black">Register</a>
+                <a href="#" className="block hover:text-black">Dashboard</a>
+                <a href="#" className="block hover:text-black">Profile</a>
               </div>
             )}
 
