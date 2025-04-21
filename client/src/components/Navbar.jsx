@@ -43,7 +43,7 @@ function Navbar() {
             {/* User Dropdown */}
             <div
               onClick={toggleDropdown}
-              className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center text-xl cursor-pointer"
+              className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-xl cursor-pointer"
             >
               <FaUserCircle />
             </div>

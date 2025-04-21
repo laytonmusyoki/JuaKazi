@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Register from './pages/Register'
@@ -16,44 +16,49 @@ import Footer from './pages/Footer'
 import Services from './pages/Services'
 import ServiceDetails from './pages/ServiceDetails'
 
-function App() {
-  const location=useLocation()
-  useEffect(()=>{
+function AppContent() {
+  const location = useLocation()
+
+  useEffect(() => {
     AOS.init({
-      duration:800,
-      easing:"ease-in-sine",
-      delay:100,
-      offset:100
-    });
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+      offset: 100
+    })
 
-    AOS.refresh();
+    AOS.refresh()
+  }, [])
 
-  },[])
   return (
     <>
-    <Router>
-    {location.pathname !== '/register' && <Navbar />}
+      {location.pathname !== '/register' && <Navbar />}
       <Routes>
-        <Route path='/' 
-        element={
+        <Route path='/' element={
           <>
-          <Hero/>
-          <HowItWorks/>
-          <WhyChooseUs/>
-          <Banner/>
-          <Services/>
-          <About/>
-          <Footer/>
-          <Home/>
+            <Hero />
+            <HowItWorks />
+            <WhyChooseUs />
+            <Banner />
+            <Services />
+            <About />
+            <Footer />
+            <Home />
           </>
-        }
-        />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/services/:id" element={<ServiceDetails/>} />
+        } />
+        <Route path="/register" element={<Register />} />
+        <Route path="/services/:id" element={<ServiceDetails />} />
       </Routes>
-    </Router>
-    <ToastContainer/>
+      <ToastContainer />
     </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   )
 }
 
