@@ -4,7 +4,7 @@ import { FaSearch, FaTools, FaCompass } from 'react-icons/fa';
 function Banner() {
   return (
     <div className="bg-primary text-white py-10 px-4 sm:px-10 rounded-3xl my-10 max-w-[95%] mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center text-center sm:text-left">
+      <div className="grid grid-cols-1  sm:grid-cols-3 gap-8 items-center text-center sm:text-left">
 
         {/* Left Column */}
         <div data-aos="fade-up">

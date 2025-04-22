@@ -32,10 +32,10 @@ function Navbar() {
 
           {/* Links (Desktop) */}
           <ul className="hidden md:flex space-x-6 uppercase font-semibold text-white">
-            <li className="hover:text-primary transition"><a href="#">Home</a></li>
-            <li className="hover:text-primary transition"><a href="#">About</a></li>
-            <li className="hover:text-primary transition"><a href="#">Contact</a></li>
-            <li className="hover:text-primary transition"><a href="#">Services</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="#">Home</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="#">About</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="#">Contact</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="#">Services</a></li>
           </ul>
 
           {/* Profile & Menu (Mobile) */}
