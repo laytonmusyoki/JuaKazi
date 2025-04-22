@@ -17,10 +17,31 @@ export const register = createAsyncThunk('auth/register', async (userData, thunk
       console.log('Sending userData:', userData); 
       return await authService.register(userData);
     } catch (error) {
-        alert(error)
-        console.log(error);
-        // const message = (error.response && error.response.data && error.response.data.error) || error.message || error.toString();
-        // return thunkAPI.rejectWithValue(message);
+      // Log the full structure for debugging
+      console.log('❌ Register error:', error);
+  
+      const fallbackMessage = "Something went wrong. Please try again.";
+      
+      if (!error.response) {
+        return thunkAPI.rejectWithValue(fallbackMessage);
+      }
+  
+      const data = error.response.data;
+      
+      if (Array.isArray(data?.error)) {
+        return thunkAPI.rejectWithValue(data.error.join(', '));
+      }
+  
+      if (typeof data?.error === 'string') {
+        return thunkAPI.rejectWithValue(data.error);
+      }
+  
+      if (typeof data?.error === 'object') {
+        const combined = Object.values(data.error).flat().join(', ');
+        return thunkAPI.rejectWithValue(combined || fallbackMessage);
+      }
+  
+      return thunkAPI.rejectWithValue(error.message || fallbackMessage);
     }
   });
   
