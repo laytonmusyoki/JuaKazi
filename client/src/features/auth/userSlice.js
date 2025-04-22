@@ -16,13 +16,15 @@ export const register = createAsyncThunk('auth/register', async (userData, thunk
     try {
       return await authService.register(userData);
     } catch (error) {
+      console.log('🛑 Registration error:', error.response?.data); // Add this line
+  
       const errData = error.response?.data?.error;
   
       if (Array.isArray(errData)) {
-        return thunkAPI.rejectWithValue(errData.join(', '));  // Convert array to comma-separated string
+        return thunkAPI.rejectWithValue(errData.join(', '));
       } else if (typeof errData === 'string') {
         return thunkAPI.rejectWithValue(errData);
-      } else if (typeof errData === 'object') {
+      } else if (typeof errData === 'object' && errData !== null) {
         const messages = Object.values(errData).flat().join(', ');
         return thunkAPI.rejectWithValue(messages);
       } else {
