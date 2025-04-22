@@ -14,22 +14,13 @@ const initialState=({
 
 export const register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
     try {
+      console.log('Sending userData:', userData); 
       return await authService.register(userData);
     } catch (error) {
-      console.log('🛑 Registration error:', error.response?.data); // Add this line
-  
-      const errData = error.response?.data?.error;
-  
-      if (Array.isArray(errData)) {
-        return thunkAPI.rejectWithValue(errData.join(', '));
-      } else if (typeof errData === 'string') {
-        return thunkAPI.rejectWithValue(errData);
-      } else if (typeof errData === 'object' && errData !== null) {
-        const messages = Object.values(errData).flat().join(', ');
-        return thunkAPI.rejectWithValue(messages);
-      } else {
-        return thunkAPI.rejectWithValue("Something went wrong. Please try again.");
-      }
+        alert(error)
+        console.log(error);
+        // const message = (error.response && error.response.data && error.response.data.error) || error.message || error.toString();
+        // return thunkAPI.rejectWithValue(message);
     }
   });
   
