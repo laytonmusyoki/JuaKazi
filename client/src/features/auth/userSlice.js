@@ -60,7 +60,7 @@ export const userSlice=createSlice({
         .addCase(register.rejected,(state,action)=>{
             state.isLoading=false
             state.isError=true
-            state.message=action.payload || 'Registration failed'
+            state.message=action.payload
         })
     }
 });
