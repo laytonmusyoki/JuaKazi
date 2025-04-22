@@ -14,7 +14,6 @@ function Seeker() {
     useEffect(()=>{  
         if(isError){
             toast.error(message)
-            alert(message)
         }
         if(isSuccess){
             toast.success('Registration successful')
