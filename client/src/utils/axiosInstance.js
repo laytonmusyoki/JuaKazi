@@ -4,7 +4,7 @@ import axios from "axios"
 import { getStore } from "./storeHolder";
 
 
-const baseUrl='http://juakazi.onrender.com/api/'
+const baseUrl='https://juakazi.onrender.com/api/'
 const api=axios.create({
     baseURL:baseUrl,
     headers:{
