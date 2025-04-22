@@ -43,7 +43,7 @@ function Seeker() {
             setShowpwd((prev)=>!prev)
         }
 
-        const HandleSubmit=async(e)=>{
+        const HandleSubmit=(e)=>{
             e.preventDefault()
             if(form.password !== form.confirm){
                 toast.error('Password do not match')
@@ -65,13 +65,7 @@ function Seeker() {
                     phone:form.phone,
                     user_type:form.user_type
                 }
-                try {
-                    const res=await api.post('register/',userData);
-                    return res.data
-                } catch (err) {
-                    const message=JSON.stringify(err.response.data.error)
-                    toast.error(message)
-                }
+                dispatch(register(userData))
             }
         }
 

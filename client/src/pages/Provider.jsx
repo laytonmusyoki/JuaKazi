@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { register, reset } from '../features/auth/userSlice'
 import MediumLoader from '../components/MediumLoader'
+import { toast } from 'react-toastify'
 
 function Provider() {
     const dispatch=useDispatch()
@@ -30,9 +31,6 @@ function Provider() {
 
 
          useEffect(()=>{  
-                if(isLoading){
-                    toast.loading('Loading...')
-                }
                 if(isError){
                     toast.error(message)
                 }
@@ -40,7 +38,7 @@ function Provider() {
                     toast.success('Registration successful')
                     navigate('/login')
                 }
-            },[isLoading,isError,isSuccess,message,navigate])
+            },[isError,isSuccess,message,navigate])
 
 
         const HandleSubmit=(e)=>{
@@ -116,13 +114,16 @@ function Provider() {
                 />
             </div>
             <div className='mt-2'>
-                <select name="service" id="" 
+            <select
+                name="service"
+                value={form.service}
                 onChange={HandleChange}
                 className='w-full h-[45px] pl-2 border rounded-md border-blue-500 placeholder:text-sm placeholder:font-semibold text-md font-medium text-blue-700 outline-none'
                 >
-                    {['Mechanics','Laundry','Electrician'].map((skill)=>(
-                        <option value={form.service}>{skill}</option>
-                    ))}
+                <option value="">Select service</option>
+                {['Mechanics','Laundry','Electrician'].map((skill) => (
+                    <option key={skill} value={skill}>{skill}</option>
+                ))}
                 </select>
             </div>
             <div className='mt-2'>

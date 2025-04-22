@@ -14,11 +14,11 @@ const initialState=({
 
 export const register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
     try {
-        const res=await api.post('register/',userData);
-        return res.data
+      console.log('Sending userData:', userData); 
+      return await authService.register(userData);
     } catch (err) {
-        const message=JSON.stringify(err.response.data.error)
-        return thunkAPI.rejectWithValue(message)
+        const errorData=(err.response && err.response.data && err.response.data.error) || err.message.toString()
+        return thunkAPI.rejectWithValue(errorData)
     }
   });
   

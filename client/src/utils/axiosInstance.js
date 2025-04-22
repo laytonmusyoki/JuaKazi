@@ -4,9 +4,13 @@ import axios from "axios"
 import { getStore } from "./storeHolder";
 
 
-const baseUrl='https://juakazi.onrender.com/api/'
+const baseUrl='http://127.0.0.1:8000/api/'
 const api=axios.create({
-    baseURL:baseUrl
+    baseURL:baseUrl,
+    headers:{
+        'Content-Type':'application/json'
+    },
+    timeout:10000
 });
 
 
@@ -47,7 +51,7 @@ api.interceptors.response.use(
                 return Promise.reject(err)
             }
         }
-        (error)=>Promise.reject(error)
+        return Promise.reject(error)
     }
 );
 
