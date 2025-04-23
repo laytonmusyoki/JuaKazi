@@ -40,7 +40,7 @@ api.interceptors.response.use(
           const state = getStore().getState();
           const refreshToken = state.user.refresh;
   
-          const res = await axios.create().post(`${baseURL}token/refresh/`, {
+          const res = await axios.create().post(`${baseUrl}token/refresh/`, {
             refresh: refreshToken,
           });
   
@@ -53,7 +53,7 @@ api.interceptors.response.use(
           return api(originalRequest);
         } 
         catch (err) {
-          store.dispatch(logout());
+          getStore().dispatch(logout());
           return Promise.reject(err);
         }
       }
