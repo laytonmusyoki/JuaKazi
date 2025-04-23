@@ -19,13 +19,12 @@ function Login() {
 
     useEffect(()=>{  
         if(isError){
-            toast.error(message)
+            // toast.error(message)
             dispatch(reset())
         }
         if(isSuccess){
             toast.success("Login successful");
             dispatch(reset())
-            navigate('/dashboard')
         }
       },[isLoading,isError,isSuccess,message])
 
@@ -51,8 +50,21 @@ const HandleSubmit=async(e)=>{
         return
     }
     else{
-        const res=await dispatch(login(form)).unwrap()
-        dispatch(setCredentials(res))
+        try{
+            const res=await dispatch(login(form)).unwrap()
+            dispatch(setCredentials(res))
+            const role = res?.user?.user_type
+            if (role === 'seeker') {
+            navigate('/seeker/dashboard')
+            } else if (role === 'provider') {
+            navigate('/provider/dashboard')
+            } else {
+            toast.error('Invalid user type')
+            }
+        }
+        catch(err){
+            toast.error(err)
+        }
     }
 }
 

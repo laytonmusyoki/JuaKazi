@@ -17,7 +17,12 @@ import Services from './pages/Services'
 import ServiceDetails from './pages/ServiceDetails'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
-import RequireAuth from './pages/RequireAuth'
+import RequireAuth from './middleware/RequireAuth'
+import Contact from './pages/Contact'
+import SeekerAuth from './middleware/SeekerAuth'
+import SeekerDashboard from './pages/seekers/SeekerDashboard'
+import ProviderAuth from './middleware/ProviderAuth'
+import ProviderDashboard from './pages/providers/ProviderDashboard'
 
 function AppContent() {
   const location = useLocation()
@@ -46,6 +51,7 @@ function AppContent() {
             <Banner />
             <Services />
             <About />
+            <Contact/>
             <Footer />
             <Home />
           </>
@@ -55,6 +61,14 @@ function AppContent() {
         <Route path="/services/:id" element={<ServiceDetails />} />
         <Route element={<RequireAuth/>}>
           <Route path='/dashboard' element={<Dashboard/>} />
+          {/* seeker */}
+          <Route element={<SeekerAuth/>}>
+            <Route path='/seeker/dashboard' element={<SeekerDashboard/>} />
+          </Route>
+          {/* provider */}
+          <Route element={<ProviderAuth/>}>
+            <Route path='/provider/dashboard' element={<ProviderDashboard/>} />
+          </Route>
         </Route>
       </Routes>
       <ToastContainer />

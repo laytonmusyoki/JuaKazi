@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../features/auth/userSlice'
 import api from '../utils/axiosInstance'
 import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function Navbar() {
   const { access }=useSelector((state)=>(state.user))
@@ -12,6 +14,7 @@ function Navbar() {
   const [toggleNavbar, setToggleNavbar] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef()
+  
 
   const toggleSidebar = () => setToggleNavbar(prev => !prev)
   const toggleDropdown = () => setDropdownOpen(prev => !prev)
@@ -30,11 +33,13 @@ function Navbar() {
 
   const HandleLogout=async()=>{
     try{
-      // const res=await api.get('signout/')
-      toast.success('You have logged out successfully')
+      const res=await api.post('signout/')
+      toast.success(res.data.success || 'Logged out successfully')
+      toast.success(res.data.success)
       dispatch(logout())
-      localStorage.removeItem('persist:root');
       dispatch(reset())
+      localStorage.removeItem('persist:root');
+      
     }
     catch(err){
       toast.error(err.response.data.error)

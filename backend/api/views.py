@@ -50,13 +50,14 @@ def signin(request):
                 'access': str(refresh.access_token),
                 "user":{
                     "username":data['username'],
-                    "email":data['email']
+                    "email":data['email'],
+                    "user_type":data['user_type']
                 }
             })
         return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
     
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def signout(request):
     logout(request)
