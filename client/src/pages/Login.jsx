@@ -99,7 +99,7 @@ const HandleSubmit=async(e)=>{
                                 <p>Show password</p>
                             </div>
                             <div className='mt-4 flex flex-row gap-2'>
-                                <button className='w-full bg-primary text-white border-none outline-none h-[50px] rounded-md'> {isLoading ? <MediumLoader/> : 'Register'} </button>
+                                <button className='w-full bg-primary text-white border-none outline-none h-[50px] rounded-md'> {isLoading ? <MediumLoader/> : 'Login'} </button>
                             </div>
                         </form>
                         <p className='pt-3 text-gray-600'>Don't have an account? <a href="/register" className='text-primary'>Register</a></p>
