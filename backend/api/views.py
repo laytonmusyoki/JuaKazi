@@ -39,6 +39,7 @@ def signin(request):
     if request.method == 'POST':
         username = request.data.get('username')
         password = request.data.get('password')
+        print(username,password)
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
@@ -52,7 +53,7 @@ def signin(request):
                     "email":data['email']
                 }
             })
-        return Response({'error': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET'])

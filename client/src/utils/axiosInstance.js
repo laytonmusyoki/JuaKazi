@@ -1,5 +1,5 @@
 
-import { setCredentials } from "../features/auth/userSlice";
+import { logout, setCredentials } from "../features/auth/userSlice";
 import axios from "axios"
 import { getStore } from "./storeHolder";
 

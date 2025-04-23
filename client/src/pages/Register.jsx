@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Seeker from './Seeker'
 import Provider from './Provider'
-import { setCredentials } from '../features/auth/userSlice'
 
 
 function Register() {
@@ -52,7 +51,7 @@ function Register() {
                             
                         }
                         
-                        <p className='pt-3 text-gray-600'>Already have an account? <a href="" className='text-primary'>Login</a></p>
+                        <p className='pt-3 text-gray-600'>Already have an account? <a href="/login" className='text-primary'>Login</a></p>
                     </div>
                 </div>
             </div>

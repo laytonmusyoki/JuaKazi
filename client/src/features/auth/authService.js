@@ -1,4 +1,7 @@
+import { useDispatch } from "react-redux";
 import api from "../../utils/axiosInstance";
+import { setCredentials } from "./userSlice";
+
 
 
 const register=async (user)=>{
@@ -7,8 +10,16 @@ const register=async (user)=>{
 }
 
 
+const login=async (user)=>{
+    const res=await api.post('signin/',user)
+    // dispatch(setCredentials(res.data))
+    return res.data
+}
+
+
 const authService={
-    register
+    register,
+    login
 }
 
 export default authService

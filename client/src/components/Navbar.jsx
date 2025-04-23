@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa'
+import { MdAppRegistration, MdDashboard, MdLogin, MdLogout, MdPerson }  from 'react-icons/md'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, reset } from '../features/auth/userSlice'
+import api from '../utils/axiosInstance'
+import { toast } from 'react-toastify'
 
 function Navbar() {
+  const { access }=useSelector((state)=>(state.user))
+  const dispatch=useDispatch()
   const [toggleNavbar, setToggleNavbar] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef()
@@ -20,6 +27,20 @@ function Navbar() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const HandleLogout=async()=>{
+    try{
+      // const res=await api.get('signout/')
+      toast.success('You have logged out successfully')
+      dispatch(logout())
+      localStorage.removeItem('persist:root');
+      dispatch(reset())
+    }
+    catch(err){
+      toast.error(err.response.data.error)
+    }
+    
+  }
 
   return (
     <>
@@ -50,10 +71,21 @@ function Navbar() {
 
             {dropdownOpen && (
               <div className="absolute top-12 right-0 bg-white w-44 p-3 rounded-md shadow-lg border z-50 text-sm space-y-2">
-                <a href="#" className="block hover:text-black">Login</a>
-                <a href="/register" className="block hover:text-black">Register</a>
-                <a href="#" className="block hover:text-black">Dashboard</a>
-                <a href="#" className="block hover:text-black">Profile</a>
+                {
+                  access ? 
+                  <>
+                  <a href="/dashboard" className=" hover:text-black flex items-center gap-x-2"><MdDashboard/> Dashboard</a>
+                  <a href="#" className=" hover:text-black flex items-center gap-x-2"> <MdPerson/> Profile</a>
+                <a href="" className=" hover:text-black flex items-center gap-x-2" onClick={()=>{HandleLogout()}}><MdLogout/> logout</a>
+                  </>
+                :
+                <>
+                <a href="/login" className=" hover:text-black flex items-center gap-x-2"><MdLogin/> Login</a>
+                <a href="/register" className=" hover:text-black flex items-center gap-x-2"><MdAppRegistration/> Register</a>
+                </>
+                
+                }
+                
               </div>
             )}
 

@@ -15,6 +15,9 @@ import About from './pages/About'
 import Footer from './pages/Footer'
 import Services from './pages/Services'
 import ServiceDetails from './pages/ServiceDetails'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import RequireAuth from './pages/RequireAuth'
 
 function AppContent() {
   const location = useLocation()
@@ -32,7 +35,8 @@ function AppContent() {
 
   return (
     <>
-      {location.pathname !== '/register' && <Navbar />}
+      {(location.pathname !== '/register' && location.pathname !== '/login') && <Navbar />}
+
       <Routes>
         <Route path='/' element={
           <>
@@ -47,7 +51,11 @@ function AppContent() {
           </>
         } />
         <Route path="/register" element={<Register />} />
+        <Route path='/login' element={<Login />} />
         <Route path="/services/:id" element={<ServiceDetails />} />
+        <Route element={<RequireAuth/>}>
+          <Route path='/dashboard' element={<Dashboard/>} />
+        </Route>
       </Routes>
       <ToastContainer />
     </>
