@@ -60,13 +60,14 @@ function Layout({ children }) {
             </ul>
           </div>
           <div className="flex items-center gap-4">
+          <FaUserCircle className="text-4xl bg-white text-black rounded-full p-2" />
             <button
               onClick={() => setSidebarOpen(true)}
               className="md:hidden text-white text-xl"
             >
               <FaBars />
             </button>
-            <FaUserCircle className="text-4xl bg-white text-black rounded-full p-2" />
+            
           </div>
         </div>
 
