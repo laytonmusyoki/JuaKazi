@@ -6,11 +6,14 @@ import { logout, reset } from '../features/auth/userSlice'
 import api from '../utils/axiosInstance'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
+import SmallNavbar from './SmallNavbar'
 
 
 function Navbar() {
   const { access }=useSelector((state)=>(state.user))
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const [toggleNavbar, setToggleNavbar] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef()
@@ -32,19 +35,9 @@ function Navbar() {
   }, [])
 
   const HandleLogout=async()=>{
-    try{
-      const res=await api.post('signout/')
-      toast.success(res.data.success || 'Logged out successfully')
-      toast.success(res.data.success)
       dispatch(logout())
       dispatch(reset())
       localStorage.removeItem('persist:root');
-      
-    }
-    catch(err){
-      toast.error(err.response.data.error)
-    }
-    
   }
 
   return (
@@ -58,10 +51,11 @@ function Navbar() {
 
           {/* Links (Desktop) */}
           <ul className="hidden md:flex space-x-6 uppercase font-semibold text-white">
-            <li className="hover:text-black transform transition-all duration-300"><a href="#">Home</a></li>
-            <li className="hover:text-black transform transition-all duration-300"><a href="#">About</a></li>
-            <li className="hover:text-black transform transition-all duration-300"><a href="#">Contact</a></li>
-            <li className="hover:text-black transform transition-all duration-300"><a href="#">Services</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="/">Home</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="/about">About</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="/contact">Contact</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="/services">Services</a></li>
+            <li className="hover:text-black transform transition-all duration-300"><a href="/providers">Providers</a></li>
           </ul>
 
           {/* Profile & Menu (Mobile) */}
@@ -110,31 +104,7 @@ function Navbar() {
       )}
 
       {/* Sidebar */}
-      <div
-        className={`fixed top-0 left-0 w-[85%] h-full bg-white shadow-lg z-50 p-6 transform transition-transform duration-300 ${
-          toggleNavbar ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-primary">
-            <span className="bg-primary text-white px-2 py-1 rounded-l-xl">Jua</span>
-            <span className="bg-black text-white px-2 py-1 rounded-r-xl">Kazi</span>
-          </h1>
-          <button
-            className="text-2xl text-gray-800"
-            onClick={toggleSidebar}
-          >
-            <FaTimes />
-          </button>
-        </div>
-
-        <ul className="space-y-4 uppercase font-semibold text-gray-700">
-          <li className="hover:text-primary transition"><a href="#">Home</a></li>
-          <li className="hover:text-primary transition"><a href="#">About</a></li>
-          <li className="hover:text-primary transition"><a href="#">Contact</a></li>
-          <li className="hover:text-primary transition"><a href="#">Services</a></li>
-        </ul>
-      </div>
+      <SmallNavbar toggleNavbar={toggleNavbar} toggleSidebar={toggleSidebar}/>
     </>
   )
 }

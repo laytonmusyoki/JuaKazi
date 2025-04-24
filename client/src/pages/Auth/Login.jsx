@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { login, reset, setCredentials } from '../features/auth/userSlice'
-import MediumLoader from '../components/MediumLoader'
+import { login, reset, setCredentials } from '../../features/auth/userSlice'
+import MediumLoader from '../../components/MediumLoader'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {

@@ -56,9 +56,27 @@ def signin(request):
             })
         return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
     
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def seekerProfile(request):
+    user = request.user
+    try:
+        seeker_profile = SeekerProfile.objects.get(user=user)
+        data = {
+            'username': user.username,
+            'email': user.email,
+            'phone': seeker_profile.phone,
+            'user_type': user.user_type
+        }
+        return Response(data, status=status.HTTP_200_OK)
+    except SeekerProfile.DoesNotExist:
+        return Response({'error': 'Profile not found'}, status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['POST'])
+        
+
+
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def signout(request):
-    logout(request)
-    return Response({"success":"You have logged out successfully"},status=status.HTTP_200_OK)
+    # logout(request)
+    return Response({"success":"You have logged out successfully"})

@@ -1,12 +1,12 @@
 import React from 'react'
-import services from '../data/services' 
+import services from '../../data/services' 
 import { useNavigate } from 'react-router-dom'
 
 function Services() {
   const navigate = useNavigate()
 
   return (
-    <div className='w-full bg-gray-100 text-gray-800 mt-[100px]'>
+    <div id='services' className='w-full bg-gray-100 text-gray-800 mt-[100px]'>
       <div className='max-w-[95%] mx-auto w-full py-10 px-4 sm:px-10'>
         <h1 className='text-4xl font-bold text-center my-8'>Our Services</h1>
         <p className='text-center text-lg mb-8'>Explore a wide range of services offered by our skilled professionals.</p>

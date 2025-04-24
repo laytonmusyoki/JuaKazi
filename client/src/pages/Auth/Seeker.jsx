@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
-import { register, reset } from '../features/auth/userSlice'
-import Loading from '../components/Loading'
-import MediumLoader from '../components/MediumLoader'
+import { register, reset } from '../../features/auth/userSlice'
+import Loading from '../../components/Loading'
+import MediumLoader from '../../components/MediumLoader'
 
 
 function Seeker() {

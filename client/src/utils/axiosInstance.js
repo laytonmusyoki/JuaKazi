@@ -4,7 +4,7 @@ import axios from "axios"
 import { getStore } from "./storeHolder";
 
 
-const baseUrl='https://juakazi.onrender.com/api/'
+const baseUrl='http://127.0.0.1:8000/api/'
 const api=axios.create({
     baseURL:baseUrl,
     headers:{
@@ -12,6 +12,7 @@ const api=axios.create({
     },
     timeout:10000
 });
+
 
 
 api.interceptors.request.use(
@@ -32,7 +33,6 @@ api.interceptors.response.use(
     async (error) => {
       const originalRequest = error.config;
   
-      // If access token is expired and not retried yet
       if (error.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
   
@@ -45,7 +45,6 @@ api.interceptors.response.use(
           });
   
           const { access } = res.data;
-          alert(access)
           const user = state.user.user;
           getStore().dispatch(setCredentials({ access, refresh: refreshToken, user }));
   

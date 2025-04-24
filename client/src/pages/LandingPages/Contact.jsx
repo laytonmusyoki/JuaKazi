@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa'
 
 function Contact() {
   return (
-    <section className="max-w-[95%] mx-auto py-20 overflow-x-hidden">
+    <section id='contact' className="max-w-[95%] mx-auto py-20 overflow-x-hidden">
       <h2 
         className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-primary" 
         data-aos="fade-down"
@@ -17,22 +17,24 @@ function Contact() {
           className="bg-white p-8 rounded-2xl shadow-xl space-y-2 flex flex-col h-full" 
           data-aos="fade-right"
         >
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
+          <div className='grid md:grid-cols-2 gap-x-4'>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
           </div>
 
           <div>

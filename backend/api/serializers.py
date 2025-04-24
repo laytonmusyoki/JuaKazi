@@ -32,3 +32,5 @@ class Register(serializers.Serializer):
         else:
             SeekerProfile.objects.create(user=user,phone=validated_data['phone'])
         return validated_data
+
+

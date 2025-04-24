@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-      <div className='max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-[100px] py-10 px-4 sm:px-10 bg-gray-100 text-gray-800'>
+      <div id='about' className='max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-[100px] py-10 px-4 sm:px-10 bg-gray-100 text-gray-800'>
         <div data-aos="fade-right">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
             About JuaKazi

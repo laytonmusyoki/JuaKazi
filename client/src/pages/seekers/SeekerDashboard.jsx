@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import Layout from './Layout'
 
 function SeekerDashboard() {
-    const user=useSelector((state)=>(state.user.user))
   return (
-    <div className='max-w-[95%] mx-auto w-full'>
-        <h1 className='font-extrabold text-gray-500 text-center'>Welcome, {user.username} you're logged in as a {user.user_type}</h1>
-        <p className='text-gray-500 text-xl text-center'>Coming soon...</p>
+    <Layout>
+      <div className=" text-gray-600">
+        <h1 className="text-2xl font-bold mb-4">Welcome to your dashboard</h1>
+        <p>This is your seeker dashboard. More features coming soon...</p>
       </div>
+    </Layout>
   )
 }
 
